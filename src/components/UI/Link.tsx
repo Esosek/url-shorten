@@ -12,10 +12,13 @@ export default function Link({
   isPrimary = false,
 }: LinkProps) {
   const primaryClasses = isPrimary
-    ? 'bg-cyan text-white py-2 px-4 rounded-full hover:bg-cyan/50 transition-colors'
-    : 'hover:text-neutral-700';
+    ? 'bg-cyan text-white py-3 px-4 rounded-full hover:bg-cyan/50 transition-colors'
+    : 'md:hover:text-neutral-700';
   return (
-    <a href={href} className={`text-base ${primaryClasses}`}>
+    <a
+      href={href}
+      className={`text-base w-full block text-center md:inline ${primaryClasses}`}
+    >
       {children}
     </a>
   );
