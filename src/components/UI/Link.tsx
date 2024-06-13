@@ -12,7 +12,7 @@ export default function Link({
   isPrimary = false,
 }: LinkProps) {
   const primaryClasses = isPrimary
-    ? 'bg-cyan text-white py-3 px-4 rounded-full hover:bg-cyan/50 transition-colors'
+    ? 'bg-cyan text-white py-3 px-6 rounded-full hover:bg-cyan/50 transition-colors'
     : 'md:hover:text-neutral-700';
   return (
     <a
