@@ -2,6 +2,10 @@
 export default {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
   theme: {
+    fontFamily: {
+      sans: ['Poppins', 'system-ui', 'sans-serif'],
+    },
+    fontWeight: { normal: 500, bold: 700 },
     extend: {
       colors: {
         cyan: 'hsl(180, 66%, 49%)',
