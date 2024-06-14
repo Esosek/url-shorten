@@ -4,12 +4,14 @@ type LinkProps = {
   children?: ReactNode;
   href?: string;
   isPrimary?: boolean;
+  cssClass?: string;
 };
 
 export default function Link({
   children,
   href = '#',
   isPrimary = false,
+  cssClass,
 }: LinkProps) {
   const primaryClasses = isPrimary
     ? 'bg-cyan text-white py-3 px-8 rounded-full hover:bg-cyan/50 transition-colors'
@@ -17,7 +19,7 @@ export default function Link({
   return (
     <a
       href={href}
-      className={`text-base w-full block text-center md:w-fit ${primaryClasses}`}
+      className={`text-base block text-center md:w-fit ${primaryClasses} ${cssClass}`}
     >
       {children}
     </a>

@@ -10,7 +10,7 @@ export default function Intro() {
           alt="Illustration of working individual"
           className="w-[150%] max-w-none sm:w-3/4 sm:mx-auto md:w-[150%] md:order-1"
         />
-        <div className="grid">
+        <div className="grid ">
           <h1 className="text-4xl font-bold text-neutral-900 my-2 md:text-6xl md:leading-tight">
             More than just shorter links
           </h1>
@@ -18,7 +18,9 @@ export default function Intro() {
             Build your brand's recognition and get detailed insights on how your
             links are performing.
           </p>
-          <Link isPrimary={true}>Get Started</Link>
+          <Link cssClass="justify-self-center" isPrimary={true}>
+            Get Started
+          </Link>
         </div>
       </div>
     </section>
