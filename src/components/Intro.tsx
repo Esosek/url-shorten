@@ -4,7 +4,7 @@ import Link from './UI/Link';
 export default function Intro() {
   return (
     <section id="intro">
-      <div className="max-w-5xl mx-auto grid items-center justify-start px-8 mb-6 gap-12 md:grid-cols-2 md:mt-6">
+      <div className="max-w-5xl mx-auto grid items-center justify-start px-8 mb-28 gap-12 md:grid-cols-2 md:mt-6">
         <img
           src={workingImg.src}
           alt="Illustration of working individual"
