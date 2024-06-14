@@ -1,3 +1,4 @@
+import BoostCTA from './BoostCTA';
 import Header from './Header';
 import Intro from './Intro';
 import MidSection from './MidSection';
@@ -9,6 +10,7 @@ export default function App() {
       <main>
         <Intro />
         <MidSection />
+        <BoostCTA />
       </main>
     </div>
   );

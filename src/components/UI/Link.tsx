@@ -19,7 +19,7 @@ export default function Link({
   return (
     <a
       href={href}
-      className={`text-base block text-center md:w-fit ${primaryClasses} ${cssClass}`}
+      className={`text-base text-center md:w-fit ${primaryClasses} ${cssClass}`}
     >
       {children}
     </a>
