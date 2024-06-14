@@ -1,6 +1,6 @@
-import brandRecognitionIcon from '../assets/images/icon-brand-recognition.svg';
-import detailedRecordsIcon from '../assets/images/icon-detailed-records.svg';
-import customizableIcon from '../assets/images/icon-fully-customizable.svg';
+import brandRecognitionIcon from '/src/assets/images/icon-brand-recognition.svg';
+import detailedRecordsIcon from '/src/assets/images/icon-detailed-records.svg';
+import customizableIcon from '/src/assets/images/icon-fully-customizable.svg';
 
 import FeatureCard from './FeatureCard';
 import UrlInput from './UrlInput';

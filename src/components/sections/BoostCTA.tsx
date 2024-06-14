@@ -1,5 +1,5 @@
 import styles from './BoostCTA.module.css';
-import Link from './UI/Link';
+import Link from '../UI/Link';
 
 export default function BoostCTA() {
   return (

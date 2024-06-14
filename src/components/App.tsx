@@ -1,7 +1,8 @@
-import BoostCTA from './BoostCTA';
-import Header from './Header';
-import Intro from './Intro';
-import MidSection from './MidSection';
+import Header from './sections/header/Header';
+import Intro from './sections/Intro';
+import MidSection from './sections/mid-section/MidSection';
+import BoostCTA from './sections/BoostCTA';
+import Footer from './sections/Footer';
 
 export default function App() {
   return (
@@ -12,6 +13,7 @@ export default function App() {
         <MidSection />
         <BoostCTA />
       </main>
+      <Footer />
     </div>
   );
 }

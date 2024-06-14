@@ -1,5 +1,5 @@
-import workingImg from '../assets/images/illustration-working.svg';
-import Link from './UI/Link';
+import workingImg from '/src/assets/images/illustration-working.svg';
+import Link from '../UI/Link';
 
 export default function Intro() {
   return (

@@ -1,4 +1,4 @@
-import logo from '../assets/images/logo.svg';
+import logo from '/src/assets/images/logo.svg';
 import Navbar from './Navbar';
 
 type HeaderProps = {};

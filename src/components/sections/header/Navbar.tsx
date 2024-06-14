@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Link from './UI/Link';
+import Link from '../../UI/Link';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
