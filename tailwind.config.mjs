@@ -8,7 +8,8 @@ export default {
     fontWeight: { normal: 500, bold: 700 },
     extend: {
       colors: {
-        cyan: 'hsl(180, 66%, 49%)',
+        'cyan-200': 'hsl(180, 66%, 75%)',
+        'cyan-400': 'hsl(180, 66%, 49%)',
         violet: 'hsl(257, 27%, 26%)',
         red: 'hsl(0, 87%, 67%)',
         'neutral-100': '#EEF1F6',
