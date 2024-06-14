@@ -17,7 +17,7 @@ export default function UrlInput(props: UrlInputProps) {
     <div
       ref={wrapperRef}
       style={{ transform: `translateY(-${wrapperOffset}px)` }}
-      className={`${styles.urlInput} flex bg-violet gap-4 max-w-5xl mx-auto p-10 rounded-lg`}
+      className={`${styles.urlInput} grid grid-rows-2 bg-violet gap-4 max-w-5xl mx-auto p-5 rounded-lg md:p-10 md:grid-cols-[1fr_auto] md:grid-rows-1`}
     >
       <label htmlFor="url-input" className="sr-only">
         URL to shorten
@@ -27,7 +27,7 @@ export default function UrlInput(props: UrlInputProps) {
         name="url-input"
         id="url-input"
         placeholder="Shorten a link here..."
-        className="w-full px-5 py-3 rounded-md"
+        className="w-full px-5 py-3 rounded-md text-neutral-900"
       />
       <Button>Shorten It!</Button>
     </div>
