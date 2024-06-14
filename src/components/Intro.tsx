@@ -4,7 +4,7 @@ import Link from './UI/Link';
 export default function Intro() {
   return (
     <section id="intro">
-      <div className="max-w-5xl mx-auto grid items-center justify-start px-6 mb-28 gap-12 md:grid-cols-2 md:mt-6">
+      <div className="max-w-5xl mx-auto grid items-center justify-start px-6 mb-32 gap-12 md:grid-cols-2 md:mt-6">
         <img
           src={workingImg.src}
           alt="Illustration of working individual"
@@ -18,7 +18,10 @@ export default function Intro() {
             Build your brand's recognition and get detailed insights on how your
             links are performing.
           </p>
-          <Link cssClass="justify-self-center" isPrimary={true}>
+          <Link
+            cssClass="justify-self-center md:justify-self-start"
+            isPrimary={true}
+          >
             Get Started
           </Link>
         </div>
