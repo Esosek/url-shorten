@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Link from './UI/Link';
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   function handleMenuClick() {
     setIsOpen((prevValue) => !prevValue);
