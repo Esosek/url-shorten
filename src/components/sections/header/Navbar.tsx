@@ -27,17 +27,17 @@ export default function Navbar() {
       >
         <ul className="flex flex-col items-center gap-8 md:flex-row">
           <li>
-            <Link>Features</Link>
+            <Link cssClass="md:hover:text-neutral-700">Features</Link>
           </li>
           <li>
-            <Link>Pricing</Link>
+            <Link cssClass="md:hover:text-neutral-700">Pricing</Link>
           </li>
           <li>
-            <Link>Resources</Link>
+            <Link cssClass="md:hover:text-neutral-700">Resources</Link>
           </li>
           <hr className="bg-gray-600 h-[1px] w-full border-none md:hidden" />
           <li className="md:ml-auto">
-            <Link>Login</Link>
+            <Link cssClass="md:hover:text-neutral-700">Login</Link>
           </li>
           <li className="w-full md:w-fit">
             <Link isPrimary={true}>Sign Up</Link>
