@@ -21,7 +21,7 @@ export default function Navbar() {
         </svg>
       </button>
       <div
-        className={`fixed left-6 right-6 top-[15%] p-8 text-white font-bold bg-violet rounded-lg origin-top ${
+        className={`fixed left-6 right-6 top-full p-8 text-white font-bold bg-violet rounded-lg origin-top ${
           !isOpen ? 'scale-y-0 opacity-0' : 'scale-y-100 opacity-100'
         } md:static md:p-0 md:bg-inherit md:text-inherit md:w-full md:scale-y-100 md:opacity-100 transition-all`}
       >
