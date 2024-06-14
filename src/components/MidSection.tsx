@@ -17,8 +17,8 @@ export default function MidSection() {
           Track how your links are performing across the web with our advanced
           statisctics dashboard.
         </p>
-        <ul className="flex relative gap-8 mt-20">
-          <hr className="absolute top-1/2 h-2 w-3/4 bg-cyan-500 roudned-full" />
+        <ul className="flex flex-col relative gap-8 mt-20 md:flex-row">
+          <hr className="absolute w-2 h-3/4 left-[calc(50%-0.25rem)] bg-cyan-500 roudned-full md:top-1/2 md:h-2 md:w-3/4 md:left-0" />
           <FeatureCard
             iconSrc={brandRecognitionIcon.src}
             title="Brand Recognition"

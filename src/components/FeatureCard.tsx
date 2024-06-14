@@ -13,13 +13,13 @@ export default function FeatureCard({
 }: FeatureCardProps) {
   return (
     <li
-      className={`bg-white relative px-8 pb-8 rounded-md text-start ${extraCss}`}
+      className={`flex flex-col items-center bg-white z-10 px-8 pb-8 rounded-md md:text-start md:items-start ${extraCss}`}
     >
-      <div className="flex items-center justify-center absolute -top-10 rounded-full bg-violet p-4 size-20">
+      <div className="flex items-center justify-center relative -top-10 rounded-full bg-violet p-4 size-20">
         <img src={iconSrc} alt={`Icon of ${title}`} />
       </div>
 
-      <h3 className="text-xl font-bold text-neutral-900 mt-16 mb-4">{title}</h3>
+      <h3 className="text-xl font-bold text-neutral-900 mb-4">{title}</h3>
       <p className="text-base">{description}</p>
     </li>
   );
