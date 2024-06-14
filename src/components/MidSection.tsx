@@ -7,7 +7,7 @@ import UrlInput from './UrlInput';
 
 export default function MidSection() {
   return (
-    <section className="bg-neutral-100 text-center">
+    <section className="bg-neutral-100 text-center pb-48">
       <div className="max-w-5xl mx-auto px-6">
         <UrlInput />
         <h2 className="font-bold text-2xl my-6 text-neutral-900">
@@ -37,7 +37,6 @@ export default function MidSection() {
             extraCss="translate-y-20"
           />
         </ul>
-        <div className="h-56"></div>
       </div>
     </section>
   );
