@@ -3,10 +3,10 @@ import Logo from '../UI/Logo';
 
 export default function Footer() {
   return (
-    <footer className="bg-neutral-900 py-12 text-start">
-      <div className="grid grid-cols-1 items-start justify-center px-6 max-w-5xl mx-auto gap-10 md:grid-cols-[auto_1fr_auto]">
+    <footer className="bg-neutral-900 py-16 text-start">
+      <div className="grid grid-cols-1 justify-items-center items-start justify-center px-6 max-w-5xl mx-auto gap-10 md:grid-cols-[auto_1fr_auto] md:justify-items-start">
         <Logo fillClass="fill-neutral-100" />
-        <div className="grid grid-cols-1 gap-16 justify-self-end md:grid-cols-3">
+        <div className="grid grid-cols-1 gap-16 text-center md:justify-self-end md:grid-cols-3 md:text-start">
           <ul className="flex flex-col">
             <p className="text-neutral-100 mb-4">Features</p>
             <li>
@@ -67,7 +67,7 @@ export default function Footer() {
             </li>
           </ul>
         </div>
-        <div className="flex gap-4">
+        <div className="flex gap-6">
           <Link>
             <svg
               xmlns="http://www.w3.org/2000/svg"
