@@ -49,26 +49,28 @@ export default function UrlInput(props: UrlInputProps) {
       ref={formRef}
       onSubmit={handleFormSubmit}
       style={{ transform: `translateY(-${formOffset}px)` }}
-      className={`${styles.urlInput} grid grid-rows-2 bg-violet gap-4 max-w-5xl mx-auto p-5 rounded-lg md:p-10 md:grid-cols-[1fr_auto] md:grid-rows-1`}
+      className={`${styles.urlInput} grid grid-rows-[auto_1fr] bg-violet gap-4 max-w-5xl mx-auto p-5 rounded-lg md:p-10 md:grid-cols-[1fr_auto] md:grid-rows-1`}
     >
       <label htmlFor="url-input" className="sr-only">
         URL to shorten
       </label>
-      <input
-        type="url"
-        name="url-input"
-        id="url-input"
-        onChange={handleInputChange}
-        placeholder="Shorten a link here..."
-        className={`w-full px-5 py-3 rounded-md text-neutral-900 border-2 ${
-          hasFormError && 'border-red'
-        }`}
-      />
-      {hasFormError && (
-        <p className="absolute bottom-3 left-10 text-sm text-red italic">
-          Please add a link
-        </p>
-      )}
+      <div className="">
+        <input
+          type="url"
+          name="url-input"
+          id="url-input"
+          onChange={handleInputChange}
+          placeholder="Shorten a link here..."
+          className={`w-full px-5 py-3 rounded-md text-neutral-900 border-2 ${
+            hasFormError && 'border-red placeholder:text-red/75'
+          }`}
+        />
+        {hasFormError && (
+          <p className="text-left mt-2 text-sm text-red italic md:absolute md:bottom-3 md:left-10 ">
+            Please add a link
+          </p>
+        )}
+      </div>
 
       <Button type="submit">Shorten It!</Button>
     </form>
