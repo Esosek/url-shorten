@@ -1,4 +1,5 @@
 import {
+  useContext,
   useEffect,
   useRef,
   useState,
@@ -7,11 +8,11 @@ import {
 } from 'react';
 import Button from '../../UI/Button';
 import styles from './UrlInput.module.css';
+import URLHistoryContext, { type UrlPair } from '../../context/urlHistory';
 
-type UrlInputProps = {};
-
-export default function UrlInput(props: UrlInputProps) {
+export default function UrlInput() {
   const formRef = useRef<HTMLFormElement>(null);
+  const updateUrlHistory = useContext(URLHistoryContext).setUrlHistory;
 
   const [formOffset, setFormOffset] = useState(0);
   const [userInput, setUserInput] = useState('');
@@ -30,14 +31,17 @@ export default function UrlInput(props: UrlInputProps) {
   function handleFormSubmit(e: FormEvent) {
     e.preventDefault();
     if (isInputValid()) {
-      console.log('Form submitted');
+      updateUrlHistory((prevHistory) => {
+        const newUrl: UrlPair = { submitted: userInput.trim(), shortened: '' };
+        return [...prevHistory, newUrl];
+      });
     } else {
       setHasFormError(true);
     }
   }
 
   function isInputValid(): boolean {
-    if (userInput.length > 0) {
+    if (userInput.trim().length > 0) {
       return true;
     }
     setHasFormError(true);

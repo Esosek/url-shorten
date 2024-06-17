@@ -5,13 +5,16 @@ import customizableIcon from '/src/assets/images/icon-fully-customizable.svg';
 import FeatureCard from './FeatureCard';
 import UrlInput from './UrlInput';
 import UrlHistory from './UrlHistory';
+import { URLHistoryContextProvider } from '../../context/urlHistory';
 
 export default function MidSection() {
   return (
     <section className="bg-neutral-100 text-center pb-48">
       <div className="max-w-5xl mx-auto px-6">
-        <UrlInput />
-        <UrlHistory />
+        <URLHistoryContextProvider>
+          <UrlInput />
+          <UrlHistory />
+        </URLHistoryContextProvider>
         <h2 className="font-bold text-2xl my-6 text-neutral-900">
           Advanced Statistics
         </h2>
