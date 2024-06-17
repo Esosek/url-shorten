@@ -72,7 +72,9 @@ export default function UrlInput(props: UrlInputProps) {
         )}
       </div>
 
-      <Button type="submit">Shorten It!</Button>
+      <Button type="submit" isPrimary={true}>
+        Shorten It!
+      </Button>
     </form>
   );
 }
