@@ -43,6 +43,10 @@ export function URLHistoryContextProvider({ children }: PropsWithChildren) {
         },
         ...prevHistory,
       ];
+      // Prevent unlimited history
+      if (updatedHistory.length > 10) {
+        updatedHistory.pop();
+      }
       localStorage.setItem(HISTORY_KEY, JSON.stringify(updatedHistory));
       return updatedHistory;
     });
