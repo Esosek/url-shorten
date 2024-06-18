@@ -1,45 +1,46 @@
-import {
-  createContext,
-  useState,
-  type Dispatch,
-  type PropsWithChildren,
-  type SetStateAction,
-} from 'react';
+import { createContext, useState, type PropsWithChildren } from 'react';
 
-const defaultValue: UrlPair[] = [
-  {
-    submitted: 'https://www.frontendmentor.io',
-    shortened: 'https://rel.ink/k4lKyk',
-  },
-  {
-    submitted: 'https://twitter.com/frontendmentor',
-    shortened: 'https://rel.ink/gxOXp9',
-  },
-  {
-    submitted: 'https://www.linkedin.com/company/frontend-mentor',
-    shortened: 'https://rel.ink/gob3X9',
-  },
-];
-
-export type UrlPair = {
+type UrlPair = {
   submitted: string;
   shortened: string;
 };
 
 type URLHistoryContextType = {
   urlHistory: UrlPair[];
-  setUrlHistory: Dispatch<SetStateAction<UrlPair[]>>;
+  addUrl: (link: string) => void;
 };
 
 const URLHistoryContext = createContext<URLHistoryContextType>({
-  urlHistory: defaultValue,
-  setUrlHistory: () => {},
+  urlHistory: [],
+  addUrl: () => {},
 });
 
 export function URLHistoryContextProvider({ children }: PropsWithChildren) {
-  const [urlHistory, setUrlHistory] = useState(defaultValue);
+  const HISTORY_KEY = 'url_history';
+  const [urlHistory, setUrlHistory] = useState<UrlPair[]>([]);
+
+  function addUrl(link: string) {
+    if (isLinkDuplicate(link)) return;
+
+    setUrlHistory((prevHistory) => {
+      const updatedHistory = [
+        ...prevHistory,
+        { submitted: link, shortened: '' },
+      ];
+      localStorage.setItem(HISTORY_KEY, JSON.stringify(updatedHistory));
+      return updatedHistory;
+    });
+    localStorage.setItem;
+  }
+
+  function isLinkDuplicate(link: string) {
+    const existingDuplicates = urlHistory.filter(
+      (url) => url.submitted === link
+    );
+    return existingDuplicates.length > 0;
+  }
   return (
-    <URLHistoryContext.Provider value={{ urlHistory, setUrlHistory }}>
+    <URLHistoryContext.Provider value={{ urlHistory, addUrl }}>
       {children}
     </URLHistoryContext.Provider>
   );

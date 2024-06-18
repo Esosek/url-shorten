@@ -5,7 +5,7 @@ import URLHistoryContext from '../../context/urlHistory';
 
 export default function UrlHistory() {
   const urlHistory = useContext(URLHistoryContext).urlHistory;
-  const [copiedLink, setCopiedLink] = useState<string>('');
+  const [copiedLink, setCopiedLink] = useState<null | string>(null);
 
   function handleLinkCopy(link: string) {
     navigator.clipboard.writeText(link);

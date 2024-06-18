@@ -8,11 +8,11 @@ import {
 } from 'react';
 import Button from '../../UI/Button';
 import styles from './UrlInput.module.css';
-import URLHistoryContext, { type UrlPair } from '../../context/urlHistory';
+import URLHistoryContext from '../../context/urlHistory';
 
 export default function UrlInput() {
   const formRef = useRef<HTMLFormElement>(null);
-  const updateUrlHistory = useContext(URLHistoryContext).setUrlHistory;
+  const addUrlToHistory = useContext(URLHistoryContext).addUrl;
 
   const [formOffset, setFormOffset] = useState(0);
   const [userInput, setUserInput] = useState('');
@@ -31,10 +31,8 @@ export default function UrlInput() {
   function handleFormSubmit(e: FormEvent) {
     e.preventDefault();
     if (isInputValid()) {
-      updateUrlHistory((prevHistory) => {
-        const newUrl: UrlPair = { submitted: userInput.trim(), shortened: '' };
-        return [...prevHistory, newUrl];
-      });
+      addUrlToHistory(userInput.trim());
+      setUserInput('');
     } else {
       setHasFormError(true);
     }
@@ -64,6 +62,7 @@ export default function UrlInput() {
           name="url-input"
           id="url-input"
           onChange={handleInputChange}
+          value={userInput}
           placeholder="Shorten a link here..."
           className={`w-full px-5 py-3 rounded-md text-neutral-900 border-2 ${
             hasFormError && 'border-red placeholder:text-red/75'
