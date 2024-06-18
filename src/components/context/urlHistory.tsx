@@ -31,16 +31,18 @@ export function URLHistoryContextProvider({ children }: PropsWithChildren) {
     }
   }, []);
 
-  function addUrl(link: string) {
+  async function addUrl(link: string) {
     if (isLinkDuplicate(link)) return;
+    const shortenedLink = await shortenLink(link);
+    if (shortenedLink === null) return;
 
     setUrlHistory((prevHistory) => {
       const updatedHistory = [
-        ...prevHistory,
         {
           submitted: link,
-          shortened: `https://link.cz/${prevHistory.length + 1}`,
+          shortened: shortenedLink,
         },
+        ...prevHistory,
       ];
       localStorage.setItem(HISTORY_KEY, JSON.stringify(updatedHistory));
       return updatedHistory;
@@ -53,6 +55,17 @@ export function URLHistoryContextProvider({ children }: PropsWithChildren) {
       (url) => url.submitted === link
     );
     return existingDuplicates.length > 0;
+  }
+
+  async function shortenLink(link: string) {
+    const url = `/api?url=${link}`;
+    try {
+      const response = await fetch(url);
+      const data = await response.text();
+      return data;
+    } catch (error) {
+      return null;
+    }
   }
   return (
     <URLHistoryContext.Provider value={{ urlHistory, addUrl }}>
