@@ -7,4 +7,6 @@ import tailwind from '@astrojs/tailwind';
 export default defineConfig({
   integrations: [react(), tailwind()],
   output: 'hybrid',
+  site: 'https://esosek.github.io',
+  base: 'url-shortener',
 });

@@ -1,9 +1,9 @@
 .boost {
-  background-image: url('/images/bg-boost-mobile.svg');
+  background-image: url('/url-shortener/images/bg-boost-mobile.svg');
 }
 
 @media only screen and (min-width: 768px) {
   .boost {
-    background-image: url('/images/bg-boost-desktop.svg');
+    background-image: url('/url-shortener/images/bg-boost-desktop.svg');
   }
 }

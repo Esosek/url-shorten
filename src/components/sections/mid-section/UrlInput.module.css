@@ -1,9 +1,9 @@
 .urlInput {
-  background-image: url('/images/bg-shorten-mobile.svg');
+  background-image: url('/url-shortener/images/bg-shorten-mobile.svg');
 }
 
 @media only screen and (min-width: 768px) {
   .urlInput {
-    background-image: url('/images/bg-shorten-desktop.svg');
+    background-image: url('/url-shortener/images/bg-shorten-desktop.svg');
   }
 }
