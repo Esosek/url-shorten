@@ -12,12 +12,12 @@ type UrlPair = {
 
 type URLHistoryContextType = {
   urlHistory: UrlPair[];
-  addUrl: (link: string) => void;
+  addUrl: (link: string) => Promise<void>;
 };
 
 const URLHistoryContext = createContext<URLHistoryContextType>({
   urlHistory: [],
-  addUrl: () => {},
+  addUrl: async () => {},
 });
 
 export function URLHistoryContextProvider({ children }: PropsWithChildren) {
@@ -48,6 +48,7 @@ export function URLHistoryContextProvider({ children }: PropsWithChildren) {
       return updatedHistory;
     });
     localStorage.setItem;
+    return;
   }
 
   function isLinkDuplicate(link: string) {

@@ -9,6 +9,7 @@ import {
 import Button from '../../UI/Button';
 import styles from './UrlInput.module.css';
 import URLHistoryContext from '../../context/urlHistory';
+import LoadingBar from '../../UI/LoadingBar';
 
 export default function UrlInput() {
   const formRef = useRef<HTMLFormElement>(null);
@@ -17,6 +18,7 @@ export default function UrlInput() {
   const [formOffset, setFormOffset] = useState(0);
   const [userInput, setUserInput] = useState('');
   const [hasFormError, setHasFormError] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const offset = formRef.current?.clientHeight! / 2;
@@ -28,14 +30,16 @@ export default function UrlInput() {
     setUserInput(event.target.value);
   }
 
-  function handleFormSubmit(e: FormEvent) {
+  async function handleFormSubmit(e: FormEvent) {
+    setIsLoading(true);
     e.preventDefault();
     if (isInputValid()) {
-      addUrlToHistory(userInput.trim());
       setUserInput('');
+      await addUrlToHistory(userInput.trim());
     } else {
       setHasFormError(true);
     }
+    setIsLoading(false);
   }
 
   function isInputValid(): boolean {
@@ -75,8 +79,8 @@ export default function UrlInput() {
         )}
       </div>
 
-      <Button type="submit" isPrimary={true}>
-        Shorten It!
+      <Button type="submit" isPrimary={true} disabled={isLoading}>
+        {isLoading ? <LoadingBar /> : 'Shorten It!'}
       </Button>
     </form>
   );
