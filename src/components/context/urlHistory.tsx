@@ -32,9 +32,8 @@ export function URLHistoryContextProvider({ children }: PropsWithChildren) {
   }, []);
 
   async function addUrl(link: string) {
-    if (isLinkDuplicate(link)) return;
+    checkDuplicate(link);
     const shortenedLink = await shortenLink(link);
-    if (shortenedLink === null) return;
 
     setUrlHistory((prevHistory) => {
       const updatedHistory = [
@@ -51,22 +50,23 @@ export function URLHistoryContextProvider({ children }: PropsWithChildren) {
     return;
   }
 
-  function isLinkDuplicate(link: string) {
+  function checkDuplicate(link: string) {
     const existingDuplicates = urlHistory.filter(
       (url) => url.submitted === link
     );
-    return existingDuplicates.length > 0;
+    if (existingDuplicates.length > 0) {
+      throw new Error('Link was already shortened.');
+    }
   }
 
   async function shortenLink(link: string) {
     const url = `/api?url=${link}`;
-    try {
-      const response = await fetch(url);
-      const data = await response.text();
-      return data;
-    } catch (error) {
-      return null;
+    const response = await fetch(url);
+    const data = await response.json();
+    if (data.error) {
+      throw new Error(data.error);
     }
+    return data.body;
   }
   return (
     <URLHistoryContext.Provider value={{ urlHistory, addUrl }}>

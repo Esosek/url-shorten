@@ -17,7 +17,7 @@ export default function UrlInput() {
 
   const [formOffset, setFormOffset] = useState(0);
   const [userInput, setUserInput] = useState('');
-  const [hasFormError, setHasFormError] = useState(false);
+  const [formError, setFormError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -26,7 +26,7 @@ export default function UrlInput() {
   }, [formRef]);
 
   function handleInputChange(event: ChangeEvent<HTMLInputElement>) {
-    setHasFormError(false);
+    setFormError(null);
     setUserInput(event.target.value);
   }
 
@@ -34,10 +34,16 @@ export default function UrlInput() {
     setIsLoading(true);
     e.preventDefault();
     if (isInputValid()) {
-      setUserInput('');
-      await addUrlToHistory(userInput.trim());
+      try {
+        await addUrlToHistory(userInput.trim());
+        setUserInput('');
+      } catch (error) {
+        if (error instanceof Error) {
+          setFormError(error.message);
+        }
+      }
     } else {
-      setHasFormError(true);
+      setFormError('Please add a link');
     }
     setIsLoading(false);
   }
@@ -46,7 +52,6 @@ export default function UrlInput() {
     if (userInput.trim().length > 0) {
       return true;
     }
-    setHasFormError(true);
     return false;
   }
 
@@ -69,12 +74,12 @@ export default function UrlInput() {
           value={userInput}
           placeholder="Shorten a link here..."
           className={`w-full px-5 py-3 rounded-md text-neutral-900 border-2 ${
-            hasFormError && 'border-red placeholder:text-red/75'
+            formError && 'border-red placeholder:text-red/75'
           }`}
         />
-        {hasFormError && (
+        {formError && (
           <p className="text-left mt-2 text-sm text-red italic md:absolute md:bottom-3 md:left-10 ">
-            Please add a link
+            {formError}
           </p>
         )}
       </div>
