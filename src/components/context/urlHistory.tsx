@@ -1,4 +1,9 @@
-import { createContext, useState, type PropsWithChildren } from 'react';
+import {
+  createContext,
+  useEffect,
+  useState,
+  type PropsWithChildren,
+} from 'react';
 
 type UrlPair = {
   submitted: string;
@@ -19,13 +24,23 @@ export function URLHistoryContextProvider({ children }: PropsWithChildren) {
   const HISTORY_KEY = 'url_history';
   const [urlHistory, setUrlHistory] = useState<UrlPair[]>([]);
 
+  useEffect(() => {
+    const storedHistory = localStorage.getItem(HISTORY_KEY);
+    if (storedHistory) {
+      setUrlHistory(JSON.parse(storedHistory));
+    }
+  }, []);
+
   function addUrl(link: string) {
     if (isLinkDuplicate(link)) return;
 
     setUrlHistory((prevHistory) => {
       const updatedHistory = [
         ...prevHistory,
-        { submitted: link, shortened: '' },
+        {
+          submitted: link,
+          shortened: `https://link.cz/${prevHistory.length + 1}`,
+        },
       ];
       localStorage.setItem(HISTORY_KEY, JSON.stringify(updatedHistory));
       return updatedHistory;
