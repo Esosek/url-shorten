@@ -18,7 +18,7 @@ export default function UrlInput() {
   const [formOffset, setFormOffset] = useState(0);
   const [userInput, setUserInput] = useState('');
   const [hasFormError, setHasFormError] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const offset = formRef.current?.clientHeight! / 2;
@@ -79,7 +79,12 @@ export default function UrlInput() {
         )}
       </div>
 
-      <Button type="submit" isPrimary={true} disabled={isLoading}>
+      <Button
+        type="submit"
+        isPrimary={true}
+        disabled={isLoading}
+        extraClasses="min-w-36"
+      >
         {isLoading ? <LoadingBar /> : 'Shorten It!'}
       </Button>
     </form>
