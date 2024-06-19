@@ -3,7 +3,6 @@ import type { APIContext } from 'astro';
 export const prerender = false;
 
 export async function GET({ request }: APIContext) {
-  const API_KEY = 'sk_ay9UfFE7tmXvYXkf';
   const urlSearchParam = new URL(request.url).searchParams.get('url');
 
   const url = 'https://api.short.io/links';
@@ -11,7 +10,7 @@ export async function GET({ request }: APIContext) {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: API_KEY,
+      Authorization: import.meta.env.SHORT_API_KEY,
     },
     body: JSON.stringify({
       originalURL: urlSearchParam,
