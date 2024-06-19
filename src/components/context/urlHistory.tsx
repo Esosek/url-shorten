@@ -64,7 +64,7 @@ export function URLHistoryContextProvider({ children }: PropsWithChildren) {
   }
 
   async function shortenLink(link: string) {
-    const url = `/api/shortener.json?url=${link}`;
+    const url = `/api?url=${link}`;
     const response = await fetch(url);
     const data = await response.json();
     if (data.error) {
