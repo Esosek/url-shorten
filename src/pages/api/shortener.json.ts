@@ -1,7 +1,5 @@
 import type { APIContext } from 'astro';
 
-export const prerender = false;
-
 export async function GET({ request }: APIContext) {
   try {
     const urlSearchParam = new URL(request.url).searchParams.get('url');
