@@ -1,14 +1,28 @@
 import type { APIContext } from 'astro';
-import getShortenerUrl from '../server/urlShortener';
 
 export const prerender = false;
 
 export async function GET({ request }: APIContext) {
-  try {
-    const urlSearchParam = new URL(request.url).searchParams.get('url');
-    const shortenedUrl = await getShortenerUrl(urlSearchParam);
+  const API_KEY = 'sk_ay9UfFE7tmXvYXkf';
+  const urlSearchParam = new URL(request.url).searchParams.get('url');
 
-    return new Response(JSON.stringify({ body: shortenedUrl }), {
+  const url = 'https://api.short.io/links';
+  const options = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: API_KEY,
+    },
+    body: JSON.stringify({
+      originalURL: urlSearchParam,
+      domain: 'fofd.short.gy',
+    }),
+  };
+  try {
+    const response = await fetch(url, options);
+    const data = await response.json();
+
+    return new Response(JSON.stringify({ body: data.secureShortURL }), {
       status: 200,
       headers: { 'Content-Type': 'application/json' },
     });
