@@ -33,7 +33,7 @@ Users should be able to:
 ### Links
 
 - Solution URL: [https://github.com/Esosek/url-shorten](https://github.com/Esosek/url-shorten)
-- Live Site URL: [https://esosek.github.io/url-shortener](https://esosek.github.io/url-shortener)
+- Live Site URL: [https://magnificent-paletas-51031f.netlify.app/](https://magnificent-paletas-51031f.netlify.app/)
 
 ## My process
 
