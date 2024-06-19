@@ -1,15 +1,14 @@
 import type { APIContext } from 'astro';
+import getShortenerUrl from '../server/urlShortener';
 
 export const prerender = false;
 
 export async function GET({ request }: APIContext) {
   try {
     const urlSearchParam = new URL(request.url).searchParams.get('url');
-    const url = `https://ulvis.net/api.php?type=json&url=${urlSearchParam}`;
-    const response = await fetch(url);
-    const data = await response.text();
+    const shortenedUrl = await getShortenerUrl(urlSearchParam);
 
-    return new Response(JSON.stringify({ body: data }), {
+    return new Response(JSON.stringify({ body: shortenedUrl }), {
       status: 200,
       headers: { 'Content-Type': 'application/json' },
     });
